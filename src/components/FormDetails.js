@@ -7,7 +7,7 @@ function FormDetails({ Alldata }) {
     <>
       {Alldata.map((value) => {
         return (
-          <>
+          <div key={'key'}>
             <p>{value.fullname}</p>
             <p>{value.email}</p>
             <p>{value.password}</p>
@@ -15,7 +15,7 @@ function FormDetails({ Alldata }) {
             <p>{value.hobbies}</p>
             <p>{value.cities}</p>
             <p>{value.date}</p>
-          </>
+          </div>
         );
       })}
       <br />

@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 function Logo() {
   return (
     <>
-      <div>Logo</div>
+      <div style={{textAlign:'center'}}>I am Logo</div>
     </>
   );
 }

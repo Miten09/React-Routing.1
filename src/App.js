@@ -6,6 +6,7 @@ import FormDetails from "./components/FormDetails";
 import Logo from "./components/Logo";
 import { useState } from "react";
 import MainHeader from "./components/MainHeader";
+import Logout from "./components/Logout";
 
 function App() {
   const [value, setvalue] = useState([]);
@@ -26,6 +27,7 @@ function App() {
           />
           <Route path="/logo" element={<Logo />} />
         </Route>
+        <Route path="/login" element={<Login />} />
       </Routes>
     </>
   );

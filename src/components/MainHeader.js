@@ -7,6 +7,7 @@ function MainHeader() {
       <NavLink to="/formdetails">FormDetails</NavLink>&nbsp;&nbsp;&nbsp;&nbsp;
       <NavLink to="/">Form</NavLink>&nbsp;&nbsp;&nbsp;&nbsp;
       <NavLink to="/logo">Logo</NavLink>&nbsp;&nbsp;&nbsp;&nbsp;
+      <NavLink to="/login">Logout</NavLink>&nbsp;&nbsp;&nbsp;&nbsp;
       <Outlet />
     </>
   );

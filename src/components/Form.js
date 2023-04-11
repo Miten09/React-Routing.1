@@ -94,7 +94,9 @@ function Form(props) {
         <br />
         <br />
         <NavLink to="/formdetails">
-          <button type="submit" onClick={handleSubmit}>Submit</button>
+          <button type="submit" onClick={handleSubmit}>
+            Submit
+          </button>
         </NavLink>
       </form>
     </>
