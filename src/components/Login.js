@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import Navbar from "./Navbar.js";
 
 function Login() {
   const [email, setemail] = useState();
