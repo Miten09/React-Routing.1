@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import Login from "./components/Login";
+import Form from "./components/Form";
+import FormDetails from "./components/FormDetails";
+import Logo from "./components/Logo";
+import { useState } from "react";
+import MainHeader from "./components/MainHeader";
 
 function App() {
+  const [value, setvalue] = useState();
+
+  function formdata(value) {
+    console.log(value);
+    setvalue(value);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<MainHeader />}>
+          <Route index element={<Form data={formdata} />} />
+          <Route
+            path="/formdetails"
+            element={<FormDetails Alldata={value} />}
+          />
+          <Route path="/logo" element={<Logo />} />
+        </Route>
+      </Routes>
+    </>
   );
 }
 
