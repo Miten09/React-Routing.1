@@ -1,34 +1,57 @@
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import MainHeader from "./MainHeader";
+
+const schema = yup.object({
+  name: yup.string().required("Please Enter Your Name"),
+  password: yup.string().required("Please enter Your Password"),
+});
 
 function Login() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
   const [email, setemail] = useState();
   const [password, setpassword] = useState();
 
-  function handlesubmit() {
-    // e.preventDefault();
-    if (email === "miten@123" && password === "mit@123") {
-    }
+  function onSubmit() {
+    console.log("hi");
   }
   return (
     <>
-      <form onSubmit={handlesubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="text"
-          placeholder="name"
+          placeholder="Your Name"
+          value={email}
+          name="name"
           onChange={(e) => setemail(e.target.value)}
+          {...register("name", { required: true })}
         />
         <br />
+        <span style={{ color: "red" }}>{errors.name?.message}</span>
         <br />
         <input
           type="password"
-          placeholder="password"
+          placeholder="Password"
+          name="password"
+          value={password}
           onChange={(e) => setpassword(e.target.password)}
+          {...register("password", { required: true })}
         />
         <br />
+        <span style={{ color: "red" }}>{errors.password?.message}</span>
         <br />
         <NavLink to="/">
-          <button type="submit" onClick={handlesubmit}>
+          <button type="submit" onClick={handleSubmit(onSubmit)}>
             Submit
           </button>
         </NavLink>
