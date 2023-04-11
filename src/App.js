@@ -8,11 +8,11 @@ import { useState } from "react";
 import MainHeader from "./components/MainHeader";
 
 function App() {
-  const [value, setvalue] = useState();
+  const [value, setvalue] = useState([]);
 
   function formdata(value) {
     console.log(value);
-    setvalue(value);
+    setvalue([value]);
   }
   return (
     <>
