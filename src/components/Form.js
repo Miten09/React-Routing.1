@@ -6,7 +6,7 @@ function Form(props) {
   function handleSubmit(e) {
     e.preventDefault();
     props.data(fullname);
-    //console.log(fullname);
+    console.log(fullname);
   }
 
   return (
