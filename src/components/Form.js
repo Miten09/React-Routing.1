@@ -18,9 +18,14 @@ const schema = yup.object({
     .matches(RegExp("(.*\\d.*)"), "Number")
     .matches(RegExp('[!@#$%^&*(),.?":{}|<>]'), "Special"),
   gender: yup.string().required(),
-  
+  hobby: yup
+    .mixed()
+    .label("Object of Booleans")
+    .test("at-least-one-true", "At least one selected", (obj) => {
+      return Object.values(obj).some((value) => value);
+    }),
   city: yup.string().oneOf(["Ahmedabad", "Surat", "Baroda"]),
-   date: yup.string().required("Please Select Date"),
+  date: yup.string().required("Please Select Date"),
 });
 
 function Form(props) {
@@ -149,6 +154,7 @@ function Form(props) {
               value={"Cricket"}
               className="form-check-input"
               onChange={handleChange}
+              {...register("hobby", { required: true })}
             />
             <label class="form-check-label" for="inlineCheckbox1">
               Cricket
