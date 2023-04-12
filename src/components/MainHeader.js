@@ -1,15 +1,32 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import "./MainHeader.css";
 
 function MainHeader() {
   return (
-    <>
-      <NavLink to="/formdetails">FormDetails</NavLink>&nbsp;&nbsp;&nbsp;&nbsp;
-      <NavLink to="/">Form</NavLink>&nbsp;&nbsp;&nbsp;&nbsp;
-      <NavLink to="/logo">Logo</NavLink>&nbsp;&nbsp;&nbsp;&nbsp;
-      <NavLink to="/login">Logout</NavLink>&nbsp;&nbsp;&nbsp;&nbsp;
+    <div className="maindiv">
+      <NavLink to="/formdetails" className="navlink">
+        <ul className="under">
+          <li className="links">FormDetails</li>
+        </ul>
+      </NavLink>
+      <NavLink to="/" className="navlink">
+        <ul className="under">
+          <li className="links">Form</li>
+        </ul>
+      </NavLink>
+      <NavLink to="/logo" className="navlink">
+        <ul className="under">
+          <li className="links">Logo</li>
+        </ul>
+      </NavLink>
+      <NavLink to="/login" className="navlink">
+        <ul className="under">
+          <li className="links">Logout</li>
+        </ul>
+      </NavLink>
       <Outlet />
-    </>
+    </div>
   );
 }
 
