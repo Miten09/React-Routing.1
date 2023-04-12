@@ -1,11 +1,14 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import FormSlice from "../slices/formslice";
 
-function FormDetails({ Alldata }) {
-  console.log(Alldata);
+function FormDetails() {
+  const select = useSelector((state) => state.user.formslice);
+  console.log(select);
   return (
     <>
-      {Alldata.map((value) => {
+      {/* {Alldata.map((value) => {
         return (
           <div key={'key'}>
             <p>{value.fullname}</p>
@@ -19,7 +22,18 @@ function FormDetails({ Alldata }) {
         );
       })}
       <br />
-      <br />
+      <br /> */}
+      {/* <p>{select}</p> */}
+
+      {select.map((value) => {
+        return (
+          <>
+            <p>{value.fullname}</p>
+            <p>{value.email}</p>
+          </>
+        );
+      })}
+
       <NavLink to="/">
         <button>Go to Form Page</button>
       </NavLink>

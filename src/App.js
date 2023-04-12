@@ -6,25 +6,21 @@ import FormDetails from "./components/FormDetails";
 import Logo from "./components/Logo";
 import { useState } from "react";
 import MainHeader from "./components/MainHeader";
-import Logout from "./components/Logout";
 
 function App() {
-  const [value, setvalue] = useState([]);
+  // const [value, setvalue] = useState([]);
 
-  function formdata(value) {
-    console.log(value);
-    setvalue([value]);
-  }
+  // function formdata(value) {
+  //   console.log(value);
+  //   setvalue([value]);
+  // }
   return (
     <>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<MainHeader />}>
-          <Route index element={<Form data={formdata} />} />
-          <Route
-            path="/formdetails"
-            element={<FormDetails Alldata={value} />}
-          />
+          <Route index element={<Form />} />
+          <Route path="/formdetails" element={<FormDetails />} />
           <Route path="/logo" element={<Logo />} />
         </Route>
         <Route path="/login" element={<Login />} />

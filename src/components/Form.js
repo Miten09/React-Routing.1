@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useDispatch } from "react-redux";
+import { formActions } from "../slices/formslice";
 
 const schema = yup.object({
   fullname: yup.string().required("Name is Required"),
@@ -16,12 +18,14 @@ const schema = yup.object({
     .matches(RegExp("(.*\\d.*)"), "Number")
     .matches(RegExp('[!@#$%^&*(),.?":{}|<>]'), "Special"),
   gender: yup.string().required(),
-  //hobby: yup.number().required(),
-  //cities: yup.string().required(),
-  date: yup.string().required("Please Select Date"),
+  
+  city: yup.string().oneOf(["Ahmedabad", "Surat", "Baroda"]),
+   date: yup.string().required("Please Select Date"),
 });
 
 function Form(props) {
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -35,15 +39,26 @@ function Form(props) {
     email: "",
     password: "",
     gender: "",
-    hobby: "",
+    hobby: [],
     cities: "",
     date: "",
   });
 
   function onSubmit(form) {
     //e.preventDefault();
-    props.data(form);
+    // props.data(form);
     console.log(form);
+    dispatch(
+      formActions.setForm({
+        fullname: form.fullname,
+        email: form.email,
+        password: form.password,
+        gender: form.gender,
+        hobby: form.hobby,
+        cities: form.cities,
+        date: form.date,
+      })
+    );
   }
 
   function handleChange(e) {
@@ -172,6 +187,9 @@ function Form(props) {
           <select
             class="form-select form-select-sm pr-1"
             aria-label=".form-select-sm example"
+            name="city"
+            id="city"
+            {...register("city", { required: true })}
           >
             <option selected>Open this select menu</option>
             <option value="Ahmedabad">Ahmedabad</option>
@@ -179,6 +197,7 @@ function Form(props) {
             <option value="Baroda">Baroda</option>
           </select>
           <br />
+          <p style={{ color: "red" }}>{errors.city?.message}</p>
 
           <label>Birthday : &nbsp;&nbsp;&nbsp;</label>
           <input
@@ -190,7 +209,11 @@ function Form(props) {
 
           <p style={{ color: "red" }}>{errors.date?.message}</p>
 
-          <button type="submit" className="btn btn-success mt-1">
+          <button
+            type="submit"
+            className="btn btn-success mt-1"
+            onClick={handleSubmit(onSubmit)}
+          >
             Submit
           </button>
         </form>
