@@ -2,9 +2,6 @@
   list-style: none;
   overflow: hidden;
 }
-.links {
-  display: flex;
-}
 .navlink {
   text-decoration: none;
 
@@ -21,5 +18,5 @@ li:hover {
   -o-border-radius: 5px 5px 5px 5px;
 }
 .maindiv {
-  display: flex;
+  float: right;
 }

@@ -1,10 +1,20 @@
-import React from 'react'
-import {Route,Redirect} from 'react-router-dom'
+import React, { useEffect } from "react";
+import { Route, Redirect, useNavigate } from "react-router-dom";
 
-const ProtectedRoutes = () => {
+const ProtectedRoutes = (props) => {
+  const { Component } = props;
+  const navigate = useNavigate();
+  useEffect(() => {
+    let login = localStorage.getItem("login");
+    if (!login) {
+      navigate("/login");
+    }
+  });
   return (
-    <div>ProtectedRoutes</div>
-  )
-}
+    <div>
+      <Component />
+    </div>
+  );
+};
 
-export default ProtectedRoutes
+export default ProtectedRoutes;

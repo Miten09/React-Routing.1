@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, Navigate, Outlet, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -24,13 +24,18 @@ function Login() {
   const [password, setpassword] = useState();
 
   function onSubmit() {
-    console.log("hii");
-    if (email === "miten@123" && password === "mit789") {
-    }
+    localStorage.setItem("login", true);
     navigate("/");
   }
+  useEffect(() => {
+    let login = localStorage.getItem("login");
+    if (login) {
+      navigate("/");
+    } 
+  });
   return (
     <>
+    <h2 style={{textAlign:'center',color:'green'}}>Login Form</h2>
       <div className="container d-flex justify-content-center text-center mt-5">
         <form onSubmit={handleSubmit(onSubmit)} className="w-25">
           <input
