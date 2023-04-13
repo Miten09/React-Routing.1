@@ -7,7 +7,7 @@ const FormSlice = createSlice({
   },
   reducers: {
     setForm: (state, action) => {
-      state.form = action.payload;
+      state.form.push(action.payload);
       // state.email = action.payload;
       // state.password = action.payload;
       // state.gender = action.payload;

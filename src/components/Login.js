@@ -24,7 +24,9 @@ function Login() {
   const [password, setpassword] = useState();
 
   function onSubmit() {
-    // console.log("hi");
+    console.log("hii");
+    if (email === "miten@123" && password === "mit789") {
+    }
     navigate("/");
   }
   return (

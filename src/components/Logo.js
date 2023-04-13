@@ -1,10 +1,11 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import './Logo.css'
 
 function Logo() {
   return (
     <>
-      <div style={{textAlign:'center'}}>I am Logo</div>
+      <div className="maindiv">I am Logo</div>
     </>
   );
 }

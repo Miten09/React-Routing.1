@@ -1,16 +1,22 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import FormSlice from "../slices/formslice";
 
 function FormDetails() {
-  const select = useSelector((state) => state.user.formslice);
+  const navigate = useNavigate();
+
+  function handleClick() {
+    navigate("/");
+  }
+
+  const select = useSelector((state) => state.user.form);
   console.log(select);
   return (
     <>
-      {/* {Alldata.map((value) => {
+      {select.map((value) => {
         return (
-          <div key={'key'}>
+          <div key={"key"}>
             <p>{value.fullname}</p>
             <p>{value.email}</p>
             <p>{value.password}</p>
@@ -22,21 +28,17 @@ function FormDetails() {
         );
       })}
       <br />
-      <br /> */}
-      {/* <p>{select}</p> */}
+      <br />
+      {/* <p>{select.fullname}</p>
+      <p>{select.email}</p> */}
 
-      {select.map((value) => {
-        return (
-          <>
-            <p>{value.fullname}</p>
-            <p>{value.email}</p>
-          </>
-        );
-      })}
-
-      <NavLink to="/">
-        <button>Go to Form Page</button>
-      </NavLink>
+      <button
+        onClick={handleClick}
+        style={{ marginTop: "100px", marginRight: "150px" }}
+        className="btn btn-success mt-10"
+      >
+        Go to Form Page
+      </button>
     </>
   );
 }

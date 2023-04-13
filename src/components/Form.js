@@ -54,15 +54,7 @@ function Form(props) {
     // props.data(form);
     console.log(form);
     dispatch(
-      formActions.setForm({
-        fullname: form.fullname,
-        email: form.email,
-        password: form.password,
-        gender: form.gender,
-        hobby: form.hobby,
-        cities: form.cities,
-        date: form.date,
-      })
+      formActions.setForm(form)
     );
   }
 
@@ -77,7 +69,7 @@ function Form(props) {
 
   return (
     <>
-      <div className="container d-flex justify-content-center text-center mt-5">
+      <div className="container d-flex justify-content-center mt-5 pl-10 ">
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             type="text"
