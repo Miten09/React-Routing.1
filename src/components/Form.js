@@ -3,7 +3,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
-import { formActions } from "../slices/formslice";
+import { formActions } from "../store/slices/formslice";
+import './Form.css'
 
 const schema = yup.object({
   fullname: yup.string().required("Name is Required"),
@@ -36,7 +37,7 @@ function Form(props) {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(schema),  
   });
 
   const [form, setform] = useState({
@@ -45,7 +46,7 @@ function Form(props) {
     password: "",
     gender: "",
     hobby: [],
-    cities: "",
+    city: "",
     date: "",
   });
 
@@ -67,6 +68,7 @@ function Form(props) {
 
   return (
     <>
+    <h2 style={{textAlign:'center',marginTop:'3%',color:'green'}}>SignUp Form </h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
         style={{ textAlign: "center", marginTop: "50px" }}
@@ -75,6 +77,7 @@ function Form(props) {
           type="text"
           placeholder="Your Name"
           name="fullname"
+          className="form-input"
           onChange={handleChange}
           {...register("fullname", { required: true })}
         />
@@ -83,6 +86,7 @@ function Form(props) {
           type="email"
           name="email"
           placeholder="Email"
+          className="form-input"
           onChange={handleChange}
           {...register("email", { required: true })}
         />
@@ -91,6 +95,7 @@ function Form(props) {
           type="password"
           name="password"
           placeholder="Password"
+          className="form-input"
           onChange={handleChange}
           {...register("password", { required: true })}
         />
@@ -106,7 +111,7 @@ function Form(props) {
         />
         <label class="form-check-label " for="inlineRadio1">
           Male
-        </label>
+        </label>&nbsp;&nbsp;
         <input
           type="radio"
           name="gender"
@@ -116,7 +121,7 @@ function Form(props) {
         />
         <label class="form-check-label" for="inlineRadio1">
           Female
-        </label>
+        </label>&nbsp;&nbsp;
         <input
           type="radio"
           name="gender"
@@ -136,7 +141,7 @@ function Form(props) {
         />
         <label class="form-check-label" for="inlineCheckbox1">
           Cricket
-        </label>
+        </label>&nbsp;&nbsp;
         <input
           type="checkbox"
           name="hobby"
@@ -146,7 +151,7 @@ function Form(props) {
         />
         <label class="form-check-label" for="inlineCheckbox1">
           Football
-        </label>
+        </label>&nbsp;&nbsp;
         <input
           type="checkbox"
           name="hobby"
@@ -160,11 +165,12 @@ function Form(props) {
         <br />
         <span style={{ color: "red" }}>{errors.hobby?.message}</span>
         <br />
-        <label>Choose a City : </label>
+        <label>Choose a City :&nbsp;&nbsp; </label>
         <select
           aria-label=".form-select-sm example"
           name="city"
           id="city"
+          className="form-input"
           {...register("city", { required: true })}
         >
           <option selected>Open this select menu</option>
@@ -178,6 +184,7 @@ function Form(props) {
         <input
           type="date"
           name="date"
+          className="form-input"
           onChange={handleChange}
           {...register("date", { require: true })}
         />

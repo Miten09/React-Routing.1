@@ -20,31 +20,42 @@ function Login() {
     resolver: yupResolver(schema),
   });
 
-  const [email, setemail] = useState();
-  const [password, setpassword] = useState();
+  // const [email, setemail] = useState('');
+  // const [password, setpassword] = useState('');
 
-  function onSubmit() {
-    localStorage.setItem("login", true);
-    navigate("/");
+  //after clickiing on submnit button localstorege set
+  function onSubmit(abc) {
+    // navigate("/");
+    // console.log(email, password);
+    console.log(abc);
+    if (abc.name === "miten@456" && abc.password === "miten123") {
+      localStorage.setItem("login", true);
+      navigate("/");
+    } else {
+      return;
+    }
   }
+
+  //useEffect check localstorage value
   useEffect(() => {
     let login = localStorage.getItem("login");
     if (login) {
       navigate("/");
-    } 
+    }
   });
+
   return (
     <>
-    <h2 style={{textAlign:'center',color:'green'}}>Login Form</h2>
+      <h2 style={{ textAlign: "center", color: "green" }}>Login Form</h2>
       <div className="container d-flex justify-content-center text-center mt-5">
         <form onSubmit={handleSubmit(onSubmit)} className="w-25">
           <input
             type="text"
-            placeholder="Your Name"
-            value={email}
+            placeholder="Your Email"
+            // value={email}
             name="name"
-            onChange={(e) => setemail(e.target.value)}
             {...register("name", { required: true })}
+            // onChange={(e) => setemail(e.target.value)}
             className="form-control"
           />
 
@@ -54,10 +65,10 @@ function Login() {
             type="password"
             placeholder="Password"
             name="password"
-            value={password}
+            // value={password}
             className="form-control"
-            onChange={(e) => setpassword(e.target.password)}
             {...register("password", { required: true })}
+            // onChange={(e) => setpassword(e.target.value)}
           />
 
           <p style={{ color: "red" }}>{errors.password?.message}</p>

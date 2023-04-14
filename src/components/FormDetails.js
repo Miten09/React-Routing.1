@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
-import FormSlice from "../slices/formslice";
+import FormSlice from "../store/slices/formslice";
 
 function FormDetails() {
   const navigate = useNavigate();
@@ -21,8 +21,8 @@ function FormDetails() {
             <p>{value.email}</p>
             <p>{value.password}</p>
             <p>{value.gender}</p>
-            <p>{value.hobbies}</p>
-            <p>{value.cities}</p>
+            <p>{value.hobby}</p>
+            <p>{value.city}</p>
             <p>{value.date}</p>
           </div>
         );

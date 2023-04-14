@@ -3,8 +3,6 @@
   overflow: hidden;
 }
 .navlink {
-  text-decoration: none;
-
   color: green;
 }
 li:hover {
@@ -16,7 +14,10 @@ li:hover {
   -moz-border-radius: 5px 5px 5px 5px;
   -ms-border-radius: 5px 5px 5px 5px;
   -o-border-radius: 5px 5px 5px 5px;
+  padding: 1px;
 }
 .maindiv {
   float: right;
+  text-decoration: none;
+  color: green;
 }

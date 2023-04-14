@@ -3,24 +3,34 @@ import { NavLink, Outlet } from "react-router-dom";
 import "./MainHeader.css";
 import Logout from "./Logout";
 
+const headers = [
+  {
+    to: "/formdetails",
+    text: "FormDetails",
+  },
+  {
+    to: "/",
+    text: "Form",
+  },
+  {
+    to: "/logo",
+    text: "Logo",
+  },
+];
 function MainHeader() {
   return (
     <>
-      <NavLink to="/formdetails" className="maindiv">
-        <ul className="under">
-          <li className="links">FormDetails</li>
-        </ul>
-      </NavLink>
-      <NavLink to="/" className="maindiv">
-        <ul className="under">
-          <li className="links">Form</li>
-        </ul>
-      </NavLink>
-      <NavLink to="/logo" className="maindiv">
-        <ul className="under">
-          <li className="links">Logo</li>
-        </ul>
-      </NavLink>
+      {headers.map((value) => {
+        return (
+          <>
+            <NavLink to={value.to} className="maindiv">
+              <ul className="under">
+                <li className="links">{value.text}</li>
+              </ul>
+            </NavLink>
+          </>
+        );
+      })}
 
       <Logout />
 
